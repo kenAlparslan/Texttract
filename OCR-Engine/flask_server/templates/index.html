@@ -1,0 +1,35 @@
+{% extends "_base.html" %}
+
+{% block content %}
+
+<form role="form" method="POST" id="post-form" onsubmit="return false">
+  <div class="form-group">
+    <input type="text" class="form-control input-lg" name="image_url" placeholder="enter an image url..." required>
+  </div>
+  <button type="submit" class="btn btn-lg btn-block btn-success boom" id="search">Submit!</button>
+</form>
+
+<div id="results">
+  <h1>Results</h1>
+  <div id="results-data"></div>
+</div>
+
+<br><br>
+
+<div id="retry"><a href="">Again?</a></div>
+
+<div id="samples">
+  <p>Sample Images to be tested:</p>
+  <ul>
+    <li><a href="https://files.realpython.com/media/ocr.930a7baf9137.jpg">Sample #1</a></li>
+    <li><a href="https://srv-file5.gofile.io/download/kTZ0zx/Capture.PNG">Sample #2</a></li>
+    <li><a href="https://files.realpython.com/media/sample1.a36a230755dc.jpg">Sample #3</a></li>
+    <li><a href="https://files.realpython.com/media/sample2.36f8074c5273.jpg">Sample #4</a></li>
+    <li><a href="https://files.realpython.com/media/sample3.8d93cef43018.jpg">Sample #5</a></li>
+    <li><a href="https://files.realpython.com/media/sample4.c68c31b95ffb.jpg">Sample #6</a></li>
+    <li><a href="https://files.realpython.com/media/sample5.ca470b17f6d7.jpg">Sample #7</a></li>
+    </li>
+  </ul>
+</div>
+
+{% endblock %}
