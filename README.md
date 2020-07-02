@@ -65,10 +65,9 @@ https://medium.com/@jdegange85/benchmarking-modern-cnn-architectures-to-rvl-cdip
 
 
 ## Current Project Repo Link:
-All the code is here. https://github.com/ya332/TextTract.git 
-A copy of the dataset is also in this Kaggle kernel.
-https://www.kaggle.com/yigitican1997/starter-the-rvl-cdip-dataset-test-33a630b7-f/edit
-based on Best Result achieved for RVL-CDIP:  InceptionResNetV2 with penalized learning rate with vanilla SGD on 512x512 gave us the best result
+All the code is here. https://github.com/kenAlparslan/TextTract.git 
+
+InceptionResNetV2 with penalized learning rate with vanilla SGD on 512x512 gave the best result
 
 ## Some Additional Papers
 Modular Multimodal Architecture for Document Classification: https://www.groundai.com/project/modular-multimodal-architecture-for-document-classification/1
