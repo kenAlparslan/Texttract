@@ -64,9 +64,6 @@ https://github.com/jdegange/Benchmarking-Modern-CNN-Architectures-to-RVL-CDIP
 https://medium.com/@jdegange85/benchmarking-modern-cnn-architectures-to-rvl-cdip-9dd0b7ec2955
 
 
-## Current Project Repo Link:
-All the code is here. https://github.com/kenAlparslan/TextTract.git 
-
 InceptionResNetV2 with penalized learning rate with vanilla SGD on 512x512 gave the best result
 
 ## Some Additional Papers
