@@ -78,4 +78,4 @@ rvlcdip model had final accuracy 65%.
 loss: 1.1834 - acc: 0.6500 - categorical_crossentropy: 1.1834 - val_loss: 1.2591 - val_acc: 0.6075 - val_categorical_crossentropy: 1.2591
 
 ## 
-- [ x ] Add a model
+- [x] Add a model
