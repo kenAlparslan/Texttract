@@ -101,11 +101,12 @@ Similarly, you can do evaluation by changing --do_train to --do_eval and --do_te
 - [x] Create UI
 - [x] Add a trained model
 - [x] Create the Server
+- [] Add Code Climate for Coverage
 - [] Create API endpoint for recognition
 - [] Add OCR to the client side
 - [] Store Pre-trained models in backend
 - [] Deploy to Heroku
 - [] Containerized the App
-- [] Add CI/CD
+- [] Add Travis CI/CD
 - [] Format the End result
 - [] Store all the data inside the DB
