@@ -77,5 +77,35 @@ Evaluation of Deep Convolutional Nets for Document Image Classification and Retr
 rvlcdip model had final accuracy 65%. 
 loss: 1.1834 - acc: 0.6500 - categorical_crossentropy: 1.1834 - val_loss: 1.2591 - val_acc: 0.6075 - val_categorical_crossentropy: 1.2591
 
+## New Model
+https://github.com/microsoft/unilm/tree/master/layoutlm
+
+python run_classification.py  --data_dir  data \
+                              --model_type layoutlm \
+                              --model_name_or_path path/to/pretrained/model/directory \
+                              --output_dir path/to/output/directory \
+                              --do_lower_case \
+                              --max_seq_length 512 \
+                              --do_train \
+                              --do_eval \
+                              --num_train_epochs 40.0 \
+                              --logging_steps 5000 \
+                              --save_steps 5000 \
+                              --per_gpu_train_batch_size 16 \
+                              --per_gpu_eval_batch_size 16 \
+                              --evaluate_during_training \
+                              --fp16 
+Similarly, you can do evaluation by changing --do_train to --do_eval and --do_test
+
 ## 
-- [x] Add a model
+- [x] Create UI
+- [x] Add a trained model
+- [x] Create the Server
+- [] Create API endpoint for recognition
+- [] Add OCR to the client side
+- [] Store Pre-trained models in backend
+- [] Deploy to Heroku
+- [] Containerized the App
+- [] Add CI/CD
+- [] Format the End result
+- [] Store all the data inside the DB
