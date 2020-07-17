@@ -130,6 +130,7 @@ dmypy.json
  
 
 # Big Data
+/dataset
 /data
 data.zip
 /rvlcdip-dataset
