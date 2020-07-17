@@ -138,3 +138,6 @@ data.zip
 
 # Saved big models
 *.h5
+
+# Model
+/layoutlm/layoutlm-base-uncased/
