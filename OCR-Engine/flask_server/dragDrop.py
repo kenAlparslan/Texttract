@@ -12,11 +12,26 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 
 def allowed_file(filename):
+    '''
+     Checks for allowed extensions.
+ 
+         Parameters:
+                 filename (string): filename
+         Returns:
+                 (Boolean): True or False.
+    '''
     return '.' in filename and \
            filename.rsplit('.', 1)[1] in ALLOWED_EXTENSIONS
 
 @app.route('/', methods=['GET', 'POST'])
 def upload_file():
+    '''
+    / Endpoint for uploading file.
+        Body for POST:
+            [String] files: filename to be uploaded.
+        Returns:
+                [String] Serves a form string to be rendered as HTML.
+    '''
     if request.method == 'POST':
         file = request.files['xhr2upload'] # [0]
         if file and allowed_file(file.filename):
