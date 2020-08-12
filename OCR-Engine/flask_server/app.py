@@ -14,11 +14,29 @@ _VERSION = 1  # API version
 
 @app.route('/')
 def main():
+    '''
+     Endpoint for the app.
+         Parameters:
+                 None
+ 
+         Returns:
+                 [HTML] index.html
+     '''
     return render_template('index.html')
 
 
 @app.route('/v{}/ocr'.format(_VERSION), methods=["POST"])
 def ocr():
+    '''
+    Endpoint for OCR.
+
+        Parameters:
+                None
+
+        Returns:
+                (JSON): jsonify({"output": output}) if successful
+                (JSON): jsonify({"error": error}) if any error
+    '''
 
     # Read the URL
     try:
@@ -57,11 +75,30 @@ def ocr():
 
 @app.errorhandler(500)
 def internal_error(error):
+    '''
+    500 Endpoint for OCR. 
+
+        Parameters:
+                None
+
+        Returns:
+                None
+    '''
+    
     print("*** 500 ***\n{}".format(str(error)))  # ghetto logging
 
 
 @app.errorhandler(404)
 def not_found_error(error):
+    '''
+    404 Endpoint for OCR. 
+
+        Parameters:
+                None
+
+        Returns:
+                None
+    '''
     print("*** 404 ***\n{}".format(str(error)))
 
 if not app.debug:
