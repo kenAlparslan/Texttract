@@ -97,18 +97,49 @@ python run_classification.py  --data_dir  data \
                               --fp16 
 Similarly, you can do evaluation by changing --do_train to --do_eval and --do_test
 
+## Deployed -AWS
+
+http://54.242.199.97:5000/
+
+# TextTract Server - Client App
+Front end: HTML
+Backend: Python Flask
+Database: None
+Deployment: Docker
+
+# Docker Install
+Install Docker for Mac or Docker for Windows https://hub.docker.com/editions/community/docker-ce-desktop-windows/
+Build the container and run the image...
+
+# How to Run App Locally
+```sh
+$ cd ./OCR-Engine/flask_server
+$ docker build --rm -t flask-ocr .
+$ docker run -p 5000:5000 flask-ocr
+```
+If localhost:5000 is busy, simply change it to a different port number. First 5000 is your localhost port number, 5000 is the docker's binded port number.
+For more info on dockers, check here:https://github.com/docker/getting-started
+
+## Test images
+https://files.realpython.com/media/ocr.930a7baf9137.jpg
+https://files.realpython.com/media/sample1.a36a230755dc.jpg
+https://files.realpython.com/media/sample2.36f8074c5273.jpg
+https://files.realpython.com/media/sample3.8d93cef43018.jpg
+https://files.realpython.com/media/sample4.c68c31b95ffb.jpg
+https://files.realpython.com/media/sample5.ca470b17f6d7.jpg
+
+## Current Docker Size
+1.25GB
+
+
 ## 
 
 - [x] Create UI
 - [x] Add a trained model
 - [x] Create the Server
-- [ ] Add Code Climate for Coverage
-- [ ] Create API endpoint for recognition
-- [ ] Add OCR to the client side
-- [ ] Store Pre-trained models in backend
-- [ ] Deploy App (Firebase)
-- [ ] Containerized the App
-- [ ] Add Travis CI/CD
-- [ ] Format the End result
-- [ ] Store all the data inside the DB
+- [x] Create API endpoint for recognition
+- [x] Add OCR to the client side
+- [x] Store Pre-trained models in backend
+- [x] Deploy App (AWS)
+
 
