@@ -34,7 +34,7 @@ The dataset is RVL-CDIP. https://www.cs.cmu.edu/~aharley/rvl-cdip/ The dataset i
 
 
 <!-- ![here](./readme-assets/document.png) -->
-<img src="./readme-assets/document.PNG" />
+<img src="./readme-assets/Document.PNG" />
 
 For proof of concept, I trained a Convolutional Neural Network based on the InceptionV2 Architecture on only 5GB of the data (2.5k images per class instead of the original 25k images per class) with 70/10/20 training, validation and testing split, trained for 100 epochs and achieved 65% accuracy. 
 loss: 1.1834 - acc: 0.6500 - categorical_crossentropy: 1.1834 - val_loss: 1.2591 - val_acc: 0.6075 - val_categorical_crossentropy: 1.2591. 
