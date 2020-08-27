@@ -1,3 +1,53 @@
+<img src="https://camo.githubusercontent.com/ed508e9c66d718f76333215a139af24f8bb8fa8d/68747470733a2f2f6d75736573636f72652e6f72672f73697465732f6d75736573636f72652e6f72672f66696c65732f4361707475726525323064253237652543432538316372616e253230323031362d30332d303125323030392e34382e31315f302e706e67" align="center"/>
+
+## Google Summer of Code 2020 Final Work Product - 
+
+## What problems we are tackling?
+
+AWS TextTract solves a couple of big problems. It does Optical Character Recognition (OCR) to extract raw text from image. Our goal is to use open source community’s resources and build (or at least try to come close to AWS TextTract). By keeping this in mind, first , I need to handle the OCR subtask. I decide to use Python-tesseract which is an optical character recognition (OCR) tool for python. “That is, it will recognize and “read” the text embedded in images. Python-tesseract is a wrapper for Google’s Tesseract-OCR Engine.[ https://github.com/tesseract-ocr/tesseract] “[1] It is a machine learning technique that depends on feature extraction from a large dataset of documents, learn the patterns in those features, and later recognize them. It has been developed since 2006 by Google. It has been backed by years of research. I encourage the reader to look at some of the research that has been made to robustify the library. For example, rsearchers had been working on Table Extraction, tab detection, and layout analysis. For example, in this paper, the research study group works on  different segmentation ways for a page layout.
+ 
+![here](./readme-assets/layout.png)
+
+[ref: https://tesseract-ocr.github.io/docs/Table_detection_in_heterogeneous_documents.pdf]
+
+## Beyond Raw Text Extraction
+
+So far I don’t find any fields, table relationships or I don’t even look at the document type. So let’s fix that. So, I want to learn about the layout in the document and preserve that information. So, this brings us to identifying the document type. I want to identify the document type, and then say if it is a resume, I would like to pay specific attention to bullet points. Because most people use bullet points for their work experience for example. Then, layout analysis is needed as well. If I could annotate them that could be even better. So, first task is to classify the document type. This is not a trivial task. When were doing raw text extraction, we were recognizing strokes/text in an image. You could imagine that you are doing the very basic task of digit classification task on the MNIST dataset, but the input can have text and not just digits. Now, document type classification is a harder problem, because we need to learn patterns on the layout of a document. You can see why this is not a trivial task since there could be infinitely many document types, with many more layout variations. How could even we limit the problem? Luckily, there has been some research in this computer vision field. Specifically, this dataset is prepared for this document type classification problem.
+The dataset is RVL-CDIP. https://www.cs.cmu.edu/~aharley/rvl-cdip/ The dataset is about 37 GB. It has 16 class labels like the following: 
+1.	letter
+2.	form
+3.	email
+4.	handwritten
+5.	advertisement
+6.	scientific report
+7.	scientific publication
+8.	specification
+9.	file folder
+10.	news article
+11.	budget
+12.	invoice
+13.	presentation
+14.	questionnaire
+15.	resume
+16.	memo
+
+
+![here](./readme-assets/document.png)
+
+For proof of concept, I trained a Convolutional Neural Network based on the InceptionV2 Architecture on only 5GB of the data (2.5k images per class instead of the original 25k images per class) with 70/10/20 training, validation and testing split, trained for 100 epochs and achieved 65% accuracy. 
+loss: 1.1834 - acc: 0.6500 - categorical_crossentropy: 1.1834 - val_loss: 1.2591 - val_acc: 0.6075 - val_categorical_crossentropy: 1.2591. 
+Training took 25 hours on Intel i3 CPU. For 16 classes, you can randomly guess, and you would have 1/16=6.25% chances of guessing the document type correctly. Compared to random guessing, 65% that I got is significantly better. Usually, in machine learning, multi -class classification problems get inherently harder as the number of classes grow significantly. The required resources also increase. There are some efforts to optimize the multi-class classifications in deep learning models. It is beyond the scope of this read, but you can find more info here [https://ieeexplore.ieee.org/document/7780615, https://projet.liris.cnrs.fr/imagine/pub/proceedings/CVPR-2009/data/papers/1036.pdf].
+The dataset has seem some remarkable classification accuracies over various research group so far since that dataset has been publicly studied for a long time. One of the teams is Microsoft and they achieved 94.42% accuracy on the document type classification on the same dataset that I achieved 60%. They have open sourced the code here [https://github.com/microsoft/unilm/tree/master/layoutlm] and you can find their publication here[ https://arxiv.org/abs/1912.13318]. They also provide the pre-trained models that they have. This is very useful. Because it means the weights that they have fine-tuned until they got 94.42% accuracy are saved and by simply loading their models, you can run classification samples on the model. You can even change the last layer’s output and use the pre-trained model for your own task (for example, you might be working on a task to classifiy a document as email or not, you would simply keep the weights and change the number of nodes from 16 to 2 for your own task). Now,  I am currently using their pre-trained model and running each user’s submitted image on this pre-trained. We can always do raw text extraction from user images. However, knowing the document type has several benefits. We can have fine-tune our raw text extraction for specific document types. For example, we might have machine learning models that are trained to detect tables on a document. Once we know that it is document that is very less likely to have a table in it, we can maybe skip the table model, and save some resources/overhead when user hits our API endpoint. Such optimizations allow for better vertical scalability. 
+
+## References
+
+Python Wrapper for Google’s OCR Engine, https://pypi.org/project/pytesseract/
+https://github.com/microsoft/unilm/tree/master/layoutlm
+LayoutLM: Pre-training of Text and Layout for Document Image Understanding
+, https://arxiv.org/abs/1912.13318
+
+
+
 # TextTract
 General Worflow is as follows:
 ![NLP Pipeline](./readme-assets/nlp_pipeline.png)
@@ -132,7 +182,7 @@ https://files.realpython.com/media/sample5.ca470b17f6d7.jpg
 1.25GB
 
 
-## 
+## To Do
 
 - [x] Create UI
 - [x] Add a trained model
@@ -141,5 +191,11 @@ https://files.realpython.com/media/sample5.ca470b17f6d7.jpg
 - [x] Add OCR to the client side
 - [x] Store Pre-trained models in backend
 - [x] Deploy App (AWS)
+
+
+## Continue to Work on
+
+- [ ] Change UI
+- [ ] Fix data extraction from Pdf file type
 
 
