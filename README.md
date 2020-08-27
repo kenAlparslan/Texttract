@@ -7,7 +7,7 @@
 AWS TextTract solves a couple of big problems. It does Optical Character Recognition (OCR) to extract raw text from image. Our goal is to use open source community’s resources and build (or at least try to come close to AWS TextTract). By keeping this in mind, first , I need to handle the OCR subtask. I decide to use Python-tesseract which is an optical character recognition (OCR) tool for python. “That is, it will recognize and “read” the text embedded in images. Python-tesseract is a wrapper for Google’s Tesseract-OCR Engine.[ https://github.com/tesseract-ocr/tesseract] “[1] It is a machine learning technique that depends on feature extraction from a large dataset of documents, learn the patterns in those features, and later recognize them. It has been developed since 2006 by Google. It has been backed by years of research. I encourage the reader to look at some of the research that has been made to robustify the library. For example, rsearchers had been working on Table Extraction, tab detection, and layout analysis. For example, in this paper, the research study group works on  different segmentation ways for a page layout.
  
 <!-- ![here](./readme-assets/layout.png) -->
-<img src="./readme-assets/layout.png" />
+<img src="./readme-assets/layout.PNG" />
 
 [ref: https://tesseract-ocr.github.io/docs/Table_detection_in_heterogeneous_documents.pdf]
 
@@ -34,7 +34,7 @@ The dataset is RVL-CDIP. https://www.cs.cmu.edu/~aharley/rvl-cdip/ The dataset i
 
 
 <!-- ![here](./readme-assets/document.png) -->
-<img src="./readme-assets/document.png" />
+<img src="./readme-assets/document.PNG" />
 
 For proof of concept, I trained a Convolutional Neural Network based on the InceptionV2 Architecture on only 5GB of the data (2.5k images per class instead of the original 25k images per class) with 70/10/20 training, validation and testing split, trained for 100 epochs and achieved 65% accuracy. 
 loss: 1.1834 - acc: 0.6500 - categorical_crossentropy: 1.1834 - val_loss: 1.2591 - val_acc: 0.6075 - val_categorical_crossentropy: 1.2591. 
